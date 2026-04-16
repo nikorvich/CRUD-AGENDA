@@ -1,0 +1,9 @@
+{
+  "name": "agenda-mvc",
+  "version": "1.0.0",
+  "description": "Agenda de Contatos seguindo o padrão MVC",
+  "main": "main.mjs",
+  "type": "module",
+  "author": "Nícolas Dias Borba",
+  "license": "ISC"
+}
