@@ -21,25 +21,6 @@ Aplicação de Agenda Telefônica desenvolvida em JavaScript (ES6+), aplicando o
     
 - **Entry Point**: Inicialização via `main.mjs`.
     
-
-## Estrutura do Projeto
-
-O projeto segue rigorosamente a estrutura de pastas definida:
-
-Plaintext
-
-```
-├── index.html
-├── main.mjs
-├── package.json
-├── /model
-│   └── Contato.mjs
-├── /controller
-│   └── AgendaController.mjs
-└── /service
-    └── AgendaService.mjs
-```
-
 ## Deploy
 
 [https://nikorvich.github.io/crud-agenda/](https://nikorvich.github.io/crud-agenda/)
