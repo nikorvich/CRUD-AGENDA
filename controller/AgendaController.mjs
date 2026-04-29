@@ -1,10 +1,11 @@
 import { AgendaService } from '../service/AgendaService.mjs';
+import { Contato } from '../model/Contato.mjs';
 
 const svc = new AgendaService();
 
 export function renderTabela() {
     const tbody = document.getElementById('tbl-contatos');
-    const lista = svc.listar();
+    const lista = svc.getContatos();
 
     tbody.innerHTML = lista.length === 0
     ? '<tr><td colspan="4" class="text-center text-muted">Nenhum contato cadastrado.</td></tr>'
@@ -23,11 +24,19 @@ export function renderTabela() {
 
 export function salvarContato(form) {
     const dados = Object.fromEntries(new FormData(form));
+
+    const erros = Contato.validar(dados);
+    if (erros.length > 0) {
+        alert(erros.join('\n'));
+        return;
+    }
+
     try {
-        svc.salvar(dados);
+        const novoContato = new Contato(dados);
+        svc.saveContato(novoContato);
+
         form.reset();
         renderTabela();
-        alert('Contato salvo com sucesso!');
     } catch (e) {
         alert(e.message);
     }
@@ -35,6 +44,6 @@ export function salvarContato(form) {
 
 export function excluirContato(id) {
     if (!confirm('Deseja excluir este contato?')) return;
-    svc.excluir(id);
+    svc.deleteContato(id);
     renderTabela();
 }
